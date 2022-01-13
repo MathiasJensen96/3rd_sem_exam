@@ -1,21 +1,4 @@
-import { useEffect } from "react";
-
 export default function Trips(props) {
-  const handleSubmit = (id) => {
-    var name = id.target.id;
-    const newGuide = {
-      name: name,
-      // gender: null,
-      // birthYear: null,
-      // profile: null,
-      // imageURL: null,
-    };
-    //console.log(id.target.id);
-    props.setGuide = newGuide;
-    console.log(props.guide);
-    //props.currentGuide(name);
-  };
-
   return (
     <div>
       <h1>Here you find a list of all our trips</h1>
@@ -35,23 +18,15 @@ export default function Trips(props) {
           </thead>
           <tbody>
             {props.trips.map((trip) => (
-              <tr key={trip.name}>
+              <tr key={trip.guide.name}>
                 <td>{trip.name}</td>
                 <td>{trip.date}</td>
                 <td>{trip.time}</td>
                 <td>{trip.location}</td>
                 <td>{trip.duration}</td>
                 <td>{trip.packingList}</td>
-                <td>
-                  <div>
-                    <button
-                      id={trip.guideName}
-                      onClick={handleSubmit}
-                      type="button"
-                    >
-                      {trip.guideName}
-                    </button>
-                  </div>
+                <td onClick={() => props.currentGuide(trip.guide)}>
+                  {trip.guide.name}
                 </td>
               </tr>
             ))}

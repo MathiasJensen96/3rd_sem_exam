@@ -10,10 +10,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const initialGuideState = {
   name: null,
-  // gender: null,
-  // birthYear: null,
-  // profile: null,
-  // imageURL: null,
+  gender: null,
+  birthYear: null,
+  profile: null,
+  imageURL: null,
 };
 
 export default function BasicExample() {
@@ -21,7 +21,8 @@ export default function BasicExample() {
   const [loggedInUser, setLoggedInUser] = useState("");
   const [errorMessage, setErrorMessage] = useState("All is good ... so far");
   const [trips, setTrips] = useState([]);
-  const [guide, setGuide] = useState(initialGuideState);
+  const [ourGuide, setOurGuide] = useState(initialGuideState);
+  const [guides, setGuides] = useState([]);
 
   const logout = () => {
     facade.logout();
@@ -33,7 +34,7 @@ export default function BasicExample() {
     fetch(`https://jenseninc.dk/devops-starter/api/trip/all`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.all);
+        //console.log(data.all);
         data.all.forEach((element) => {
           const newTrip = {
             id: element.id,
@@ -43,7 +44,7 @@ export default function BasicExample() {
             location: element.location,
             duration: element.duration,
             packingList: element.packingList,
-            guideName: element.guideName,
+            guide: element.guide,
           };
           //console.log(newTrip);
           trips.push(newTrip);
@@ -51,6 +52,40 @@ export default function BasicExample() {
         //console.log(trips);
       });
   }, []);
+
+  useEffect(() => {
+    fetch(`https://jenseninc.dk/devops-starter/api/guide/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        //console.log(data.all);
+        data.all.forEach((element) => {
+          const newGuide = {
+            name: element.name,
+            gender: element.gender,
+            birthYear: element.birthYear,
+            profile: element.profile,
+            imageURL: element.imageURL,
+          };
+          guides.push(newGuide);
+        });
+      });
+  }, []);
+
+  function currentGuide(guide) {
+    const newGuide = {
+      name: guide.name,
+      gender: guide.gender,
+      birthYear: guide.birthYear,
+      profile: guide.profile,
+      imageURL: guide.imageURL,
+    };
+    setTimeout(() => {
+      setOurGuide(newGuide);
+    }, 1000);
+    if (ourGuide !== null) {
+      console.log(ourGuide);
+    }
+  }
 
   return (
     <Router>
@@ -71,12 +106,12 @@ export default function BasicExample() {
               />
             </Route>
             <Route path="/Trips">
-              {facade.hasUserAccess("user", loggedIn) && (
-                <Trips trips={trips} guide={guide} setGuide={setGuide} />
-              )}
+              {/* {facade.hasUserAccess("user", loggedIn) && ( */}
+              <Trips trips={trips} currentGuide={currentGuide} />
+              {/* )} */}
             </Route>
             <Route path="/Guides">
-              <Guides />
+              <Guides guides={guides} />
             </Route>
           </Switch>
         </div>
