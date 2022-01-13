@@ -1,6 +1,5 @@
 package facades;
 
-import dtos.TripDTO;
 import dtos.TripsDTO;
 import entities.Trip;
 
