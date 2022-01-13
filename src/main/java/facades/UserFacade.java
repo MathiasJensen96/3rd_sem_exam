@@ -49,21 +49,21 @@ public class UserFacade {
         return user;
     }
 
-    public User createUser(String userName, String password) {
-        EntityManager em = emf.createEntityManager();
-        User user = new User(userName, password);
-        try {
-            em.getTransaction().begin();
-            Role userRole = new Role("user");
-            user.addRole(userRole);
-            em.persist(userRole);
-            em.persist(user);
-            em.getTransaction().commit();
-            return user;
-        } finally {
-            em.close();
-        }
-    }
+//    public User createUser(String userName, String password) {
+//        EntityManager em = emf.createEntityManager();
+//        User user = new User(userName, password);
+//        try {
+//            em.getTransaction().begin();
+//            Role userRole = new Role("user");
+//            user.addRole(userRole);
+//            em.persist(userRole);
+//            em.persist(user);
+//            em.getTransaction().commit();
+//            return user;
+//        } finally {
+//            em.close();
+//        }
+//    }
 
     public String getAllUsers() {
 

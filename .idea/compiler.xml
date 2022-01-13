@@ -14,9 +14,9 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Startcode" options="-endorseddirs /Users/mathiasjensen/Dev/School/3rd_semester_eksamen/Startcode/target/endorsed" />
-      <module name="devops-starter" options="-endorseddirs /Users/mathiasjensen/Dev/School/3rd_semester_eksamen/Startcode/target/endorsed" />
-      <module name="security_startcode" options="-endorseddirs /Users/mathiasjensen/Dev/School/3rd_semester_eksamen/Startcode/target/endorsed" />
+      <module name="Startcode" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="devops-starter" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
+      <module name="security_startcode" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
     </option>
   </component>
 </project>

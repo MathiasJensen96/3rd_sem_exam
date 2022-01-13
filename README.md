@@ -18,4 +18,3 @@ This document explains how to use this code (build, test and deploy), locally wi
 # CA-Sys
 # 3rd_sem_exam
 
-test

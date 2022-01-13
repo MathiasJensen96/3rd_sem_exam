@@ -62,14 +62,14 @@ public class FacadeExampleTest {
     }
 
     // TODO: Delete or change this method 
-    @Test
-    public void testCreateUser() {
-        facade = UserFacade.getUserFacade(emf);
-        User actual = facade.createUser("thias", "thias123");
-        User expected = new User("thias", "thias123");
-        Role userRole = new Role("user");
-        expected.addRole(userRole);
-        assertEquals(expected.getUserName(), actual.getUserName());
-    }
+//    @Test
+//    public void testCreateUser() {
+//        facade = UserFacade.getUserFacade(emf);
+//        User actual = facade.createUser("thias", "thias123");
+//        User expected = new User("thias", "thias123");
+//        Role userRole = new Role("user");
+//        expected.addRole(userRole);
+//        assertEquals(expected.getUserName(), actual.getUserName());
+//    }
 
 }

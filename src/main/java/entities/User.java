@@ -37,6 +37,15 @@ public class User implements Serializable {
     @ManyToMany
     private List<Role> roleList = new ArrayList<>();
 
+    @ManyToMany
+    private List<Trip> tripList = new ArrayList<>();
+
+    private String address;
+    private int phone;
+    private String email;
+    private int birthYear;
+    private String gender;
+
     public List<String> getRolesAsStrings() {
         if (roleList.isEmpty()) {
             return null;
@@ -48,6 +57,17 @@ public class User implements Serializable {
         return rolesAsStrings;
     }
 
+    public List<String> getTripsAsStrings() {
+        if (tripList.isEmpty()) {
+            return null;
+        }
+        List<String> tripsAsStrings = new ArrayList<>();
+        tripList.forEach((trip) -> {
+            tripsAsStrings.add(trip.getName());
+        });
+        return tripsAsStrings;
+    }
+
     public User() {
     }
 
@@ -56,11 +76,15 @@ public class User implements Serializable {
         return BCrypt.checkpw(pw, this.userPass);
     }
 
-    public User(String userName, String userPass) {
+    public User(String userName, String userPass, String address, int phone, String email, int birthYear, String gender) {
         this.userName = userName;
         this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.birthYear = birthYear;
+        this.gender = gender;
     }
-
 
     public String getUserName() {
         return userName;
@@ -89,4 +113,58 @@ public class User implements Serializable {
     public void addRole(Role userRole) {
         roleList.add(userRole);
     }
+
+    public List<Trip> getTripList() {
+        return tripList;
+    }
+
+    public void setTripList(List<Trip> tripList) {
+        this.tripList = tripList;
+    }
+
+    public void addTrip(Trip userTrip) {
+        tripList.add(userTrip);
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+
 }
