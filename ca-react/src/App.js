@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function BasicExample() {
+  const [trips, setTrips] = useState([]);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("All is good ... so far");
 
@@ -16,6 +18,26 @@ export default function BasicExample() {
     setLoggedIn(false);
     setErrorMessage("Logged out.");
   };
+
+  useEffect(() => {
+    fetch(`https://jenseninc.dk/devops-starter/api/trip/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.all.forEach((element) => {
+          const newTrip = {
+            name: element.name,
+            date: element.data,
+            time: element.time,
+            location: element.location,
+            duration: element.duration,
+            packingList: element.packingList,
+          };
+          console.log(newTrip);
+        });
+        //console.log(data.all);
+        // setTrips(data.all[0]);
+      });
+  }, []);
 
   return (
     <Router>
@@ -28,7 +50,7 @@ export default function BasicExample() {
               <Home />
             </Route>
             <Route path="/Trips">
-              <Trips />
+              <Trips trips={trips} />
             </Route>
           </Switch>
         </div>

@@ -91,17 +91,5 @@ public class Trip implements Serializable {
         this.packingList = packingList;
     }
 
-    @Override
-    public String toString() {
-        return "Trip{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", location='" + location + '\'' +
-                ", duration='" + duration + '\'' +
-                ", packingList='" + packingList + '\'' +
-                ", userList=" + userList +
-                '}';
-    }
+
 }
