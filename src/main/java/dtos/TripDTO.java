@@ -1,5 +1,6 @@
 package dtos;
 
+import entities.Guide;
 import entities.Trip;
 
 public class TripDTO {
@@ -11,7 +12,7 @@ public class TripDTO {
     private String location;
     private String duration;
     private String packingList;
-    private String guideName;
+    private GuideDTO guide;
 
     public TripDTO() {
     }
@@ -24,7 +25,7 @@ public class TripDTO {
         this.location = t.getLocation();
         this.duration = t.getDuration();
         this.packingList = t.getPackingList();
-        this.guideName = t.getGuide().getName();
+        this.guide = new GuideDTO(t.getGuide());
     }
 
     public Long getId() {
@@ -83,12 +84,12 @@ public class TripDTO {
         this.packingList = packingList;
     }
 
-    public String getGuideName() {
-        return guideName;
+    public GuideDTO getGuide() {
+        return guide;
     }
 
-    public void setGuideName(String guideName) {
-        this.guideName = guideName;
+    public void setGuide(GuideDTO guide) {
+        this.guide = guide;
     }
 
     @Override

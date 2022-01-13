@@ -14,6 +14,9 @@ export default function OurNavbar() {
             <LinkContainer exact to="/trips">
               <Nav.Link>Trips</Nav.Link>
             </LinkContainer>
+            <LinkContainer exact to="/guides">
+              <Nav.Link>Guides</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

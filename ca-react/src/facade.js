@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/Startcode";
+const URL = "https://jenseninc.dk/devops-starter";
 
 function handleHttpErrors(res) {
   if (!res.ok) {

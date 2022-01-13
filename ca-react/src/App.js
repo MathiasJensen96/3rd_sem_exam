@@ -3,16 +3,25 @@ import "./style2.css";
 import OurNavbar from "./components/Navbar";
 import Home from "./components/Home";
 import Trips from "./components/Trips";
+import Guides from "./components/Guides";
 import facade from "./facade";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-export default function BasicExample() {
-  const [trips, setTrips] = useState([]);
-  const [guide, setGuide] = useState("");
+const initialGuideState = {
+  name: null,
+  // gender: null,
+  // birthYear: null,
+  // profile: null,
+  // imageURL: null,
+};
 
+export default function BasicExample() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState("");
   const [errorMessage, setErrorMessage] = useState("All is good ... so far");
+  const [trips, setTrips] = useState([]);
+  const [guide, setGuide] = useState(initialGuideState);
 
   const logout = () => {
     facade.logout();
@@ -43,10 +52,6 @@ export default function BasicExample() {
       });
   }, []);
 
-  function checkoutGuide() {
-    //console.log(this);
-  }
-
   return (
     <Router>
       <div>
@@ -55,10 +60,23 @@ export default function BasicExample() {
           {/* {JSON.stringify(restaurants, null, 2)} */}
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home
+                logout={logout}
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn}
+                facade={facade}
+                setErrorMessage={setErrorMessage}
+                loggedInUser={loggedInUser}
+                setLoggedInUser={setLoggedInUser}
+              />
             </Route>
             <Route path="/Trips">
-              <Trips trips={trips} checkoutGuide={checkoutGuide} />
+              {facade.hasUserAccess("user", loggedIn) && (
+                <Trips trips={trips} guide={guide} setGuide={setGuide} />
+              )}
+            </Route>
+            <Route path="/Guides">
+              <Guides />
             </Route>
           </Switch>
         </div>

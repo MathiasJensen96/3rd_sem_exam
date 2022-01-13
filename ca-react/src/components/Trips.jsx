@@ -1,7 +1,21 @@
+import { useEffect } from "react";
+
 export default function Trips(props) {
-  const handleSubmit = () => {
-    console.log(this.index);
+  const handleSubmit = (id) => {
+    var name = id.target.id;
+    const newGuide = {
+      name: name,
+      // gender: null,
+      // birthYear: null,
+      // profile: null,
+      // imageURL: null,
+    };
+    //console.log(id.target.id);
+    props.setGuide = newGuide;
+    console.log(props.guide);
+    //props.currentGuide(name);
   };
+
   return (
     <div>
       <h1>Here you find a list of all our trips</h1>
@@ -29,9 +43,15 @@ export default function Trips(props) {
                 <td>{trip.duration}</td>
                 <td>{trip.packingList}</td>
                 <td>
-                  <a href="http://google.com">
-                    <div /*onClick={handleSubmit}*/>{trip.guideName}</div>
-                  </a>
+                  <div>
+                    <button
+                      id={trip.guideName}
+                      onClick={handleSubmit}
+                      type="button"
+                    >
+                      {trip.guideName}
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
