@@ -23,7 +23,7 @@ export default function BasicExample() {
     fetch(`https://jenseninc.dk/devops-starter/api/trip/all`)
       .then((res) => res.json())
       .then((data) => {
-        //console.log(data.all);
+        console.log(data.all);
         data.all.forEach((element) => {
           const newTrip = {
             id: element.id,
