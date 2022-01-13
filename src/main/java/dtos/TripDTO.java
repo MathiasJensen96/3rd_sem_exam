@@ -2,6 +2,9 @@ package dtos;
 
 import entities.Trip;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TripDTO {
 
     private Long id;
@@ -11,7 +14,7 @@ public class TripDTO {
     private String location;
     private String duration;
     private String packingList;
-    private long guideID;
+    private String guideName;
 
     public TripDTO() {
     }
@@ -24,17 +27,7 @@ public class TripDTO {
         this.location = t.getLocation();
         this.duration = t.getDuration();
         this.packingList = t.getPackingList();
-        this.guideID = t.getGuide().getId();
-    }
-
-    public TripDTO(String name, String date, String time, String location, String duration, String packingList, long guideID) {
-        this.name = name;
-        this.date = date;
-        this.time = time;
-        this.location = location;
-        this.duration = duration;
-        this.packingList = packingList;
-        this.guideID = guideID;
+        this.guideName = t.getGuide().getName();
     }
 
     public Long getId() {
@@ -93,12 +86,12 @@ public class TripDTO {
         this.packingList = packingList;
     }
 
-    public long getGuideID() {
-        return guideID;
+    public String getGuideName() {
+        return guideName;
     }
 
-    public void setGuideID(long guideID) {
-        this.guideID = guideID;
+    public void setGuideName(String guideName) {
+        this.guideName = guideName;
     }
 
     @Override

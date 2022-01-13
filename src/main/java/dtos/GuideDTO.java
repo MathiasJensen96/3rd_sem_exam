@@ -1,2 +1,4 @@
-package dtos;public class GuideDTO {
+package dtos;
+
+public class GuideDTO {
 }

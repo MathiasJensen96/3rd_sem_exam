@@ -6,7 +6,6 @@ import entities.Role;
 import entities.Trip;
 import entities.User;
 import facades.TripFacade;
-import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

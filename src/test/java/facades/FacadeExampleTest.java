@@ -1,10 +1,8 @@
 package facades;
 
-import entities.Role;
-import entities.User;
 import org.junit.jupiter.api.*;
 import utils.EMF_Creator;
-import entities.RenameMe;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 

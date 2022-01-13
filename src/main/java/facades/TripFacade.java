@@ -1,9 +1,8 @@
 package facades;
 
+import dtos.TripDTO;
 import dtos.TripsDTO;
-import entities.Guide;
 import entities.Trip;
-import errorhandling.NotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
