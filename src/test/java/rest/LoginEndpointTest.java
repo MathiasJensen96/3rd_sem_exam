@@ -67,29 +67,25 @@ public class LoginEndpointTest {
     public void setUp() {
         EntityManager em = emf.createEntityManager();
         try {
-//            em.getTransaction().begin();
-//            //Delete existing users and roles to get a "fresh" database
-//            em.createQuery("delete from User").executeUpdate();
-//            em.createQuery("delete from Role").executeUpdate();
-//
-//            Role userRole = new Role("user");
-//            Role adminRole = new Role("admin");
-//            User user = new User("user", "test");
-//            user.addRole(userRole);
-//            User admin = new User("admin", "test");
-//            admin.addRole(adminRole);
-//            User both = new User("user_admin", "test");
-//            both.addRole(userRole);
-//            both.addRole(adminRole);
-//            em.persist(userRole);
-//            em.persist(adminRole);
-//            em.persist(user);
-//            em.persist(admin);
-//            em.persist(both);
-//            //System.out.println("Saved test data to database");
-//            em.getTransaction().commit();
+            em.getTransaction().begin();
+            //Delete existing users and roles to get a "fresh" database
+            em.createQuery("delete from User").executeUpdate();
+            em.createQuery("delete from Role").executeUpdate();
+
+            Role userRole = new Role("user");
+            Role adminRole = new Role("admin");
+            User user = new User("user", "test", "testAddress", 11111111, "testEmail", 1999, "female");
+            user.addRole(userRole);
+            User admin = new User("admin", "test", "testAddress", 22222222, "testEmail", 1997, "male");
+            admin.addRole(adminRole);
+            em.persist(userRole);
+            em.persist(adminRole);
+            em.persist(user);
+            em.persist(admin);
+            //System.out.println("Saved test data to database");
+            em.getTransaction().commit();
         } finally {
-//            em.close();
+            em.close();
         }
     }
 
@@ -163,31 +159,6 @@ public class LoginEndpointTest {
                 .when()
                 .get("/info/user").then() //Call User endpoint as Admin
                 .statusCode(401);
-    }
-
-    @Test
-    public void testRestForMultiRole1() {
-        login("user_admin", "test");
-        given()
-                .contentType("application/json")
-                .accept(ContentType.JSON)
-                .header("x-access-token", securityToken)
-                .when()
-                .get("/info/admin").then()
-                .statusCode(200)
-                .body("msg", equalTo("Hello to (admin) User: user_admin"));
-    }
-
-    @Test
-    public void testRestForMultiRole2() {
-        login("user_admin", "test");
-        given()
-                .contentType("application/json")
-                .header("x-access-token", securityToken)
-                .when()
-                .get("/info/user").then()
-                .statusCode(200)
-                .body("msg", equalTo("Hello to User: user_admin"));
     }
 
     @Test
