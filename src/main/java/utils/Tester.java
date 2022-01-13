@@ -12,6 +12,5 @@ public class Tester {
         TripFacade tripFacade = TripFacade.getTripFacade(emf);
 
         //TripFacade.getTripFacade(emf).getAllTrips();
-        tripFacade.getGuideFromTripID(1);
     }
 }

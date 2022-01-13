@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function BasicExample() {
   const [trips, setTrips] = useState([]);
+  const [guide, setGuide] = useState("");
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("All is good ... so far");
@@ -33,6 +34,7 @@ export default function BasicExample() {
             location: element.location,
             duration: element.duration,
             packingList: element.packingList,
+            guideName: element.guideName,
           };
           //console.log(newTrip);
           trips.push(newTrip);
@@ -40,6 +42,10 @@ export default function BasicExample() {
         //console.log(trips);
       });
   }, []);
+
+  function checkoutGuide() {
+    //console.log(this);
+  }
 
   return (
     <Router>
@@ -52,7 +58,7 @@ export default function BasicExample() {
               <Home />
             </Route>
             <Route path="/Trips">
-              <Trips trips={trips} />
+              <Trips trips={trips} checkoutGuide={checkoutGuide} />
             </Route>
           </Switch>
         </div>

@@ -2,9 +2,6 @@ package dtos;
 
 import entities.Trip;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TripDTO {
 
     private Long id;

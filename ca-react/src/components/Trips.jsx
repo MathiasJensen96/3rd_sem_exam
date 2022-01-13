@@ -1,4 +1,7 @@
 export default function Trips(props) {
+  const handleSubmit = () => {
+    console.log(this.index);
+  };
   return (
     <div>
       <h1>Here you find a list of all our trips</h1>
@@ -25,7 +28,11 @@ export default function Trips(props) {
                 <td>{trip.location}</td>
                 <td>{trip.duration}</td>
                 <td>{trip.packingList}</td>
-                <td>{/*guide name*/}</td>
+                <td>
+                  <a href="http://google.com">
+                    <div /*onClick={handleSubmit}*/>{trip.guideName}</div>
+                  </a>
+                </td>
               </tr>
             ))}
           </tbody>

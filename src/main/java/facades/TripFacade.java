@@ -33,15 +33,4 @@ public class TripFacade {
         //System.out.println(t.getAll());
         return t;
     }
-
-    public String getGuideFromTripID(long id) {
-        EntityManager em = emf.createEntityManager();
-        Trip trip = em.find(Trip.class, id);
-        if (trip == null) {
-            System.out.println("no trip with that id");
-        } else {
-            System.out.println(trip.getGuide().getName());
-        }
-        return trip.getGuide().getName();
-    }
 }
