@@ -23,6 +23,9 @@ public class Trip implements Serializable {
     @ManyToMany(mappedBy = "tripList")
     private List<User> userList;
 
+    @ManyToOne
+    private Guide guide;
+
     public Trip() {
     }
 
@@ -33,6 +36,22 @@ public class Trip implements Serializable {
         this.location = location;
         this.duration = duration;
         this.packingList = packingList;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
+    public Guide getGuide() {
+        return guide;
+    }
+
+    public void setGuide(Guide guide) {
+        this.guide = guide;
     }
 
     public Long getId() {
@@ -91,5 +110,18 @@ public class Trip implements Serializable {
         this.packingList = packingList;
     }
 
-
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", location='" + location + '\'' +
+                ", duration='" + duration + '\'' +
+                ", packingList='" + packingList + '\'' +
+                ", userList=" + userList +
+                ", guide=" + guide +
+                '}';
+    }
 }

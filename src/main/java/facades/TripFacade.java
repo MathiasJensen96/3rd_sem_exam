@@ -1,7 +1,9 @@
 package facades;
 
 import dtos.TripsDTO;
+import entities.Guide;
 import entities.Trip;
+import errorhandling.NotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -32,5 +34,16 @@ public class TripFacade {
         TripsDTO t = new TripsDTO(trips);
         //System.out.println(t.getAll());
         return t;
+    }
+
+    public String getGuideFromTripID(long id) {
+        EntityManager em = emf.createEntityManager();
+        Trip trip = em.find(Trip.class, id);
+        if (trip == null) {
+            System.out.println("no trip with that id");
+        } else {
+            System.out.println(trip.getGuide().getName());
+        }
+        return trip.getGuide().getName();
     }
 }

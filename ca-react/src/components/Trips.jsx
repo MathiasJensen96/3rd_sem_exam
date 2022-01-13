@@ -2,7 +2,6 @@ export default function Trips(props) {
   return (
     <div>
       <h1>Here you find a list of all our trips</h1>
-      <p>nr. 1: {props.trips.name}</p>
 
       <div key={props.trips}>
         <table className="table">
@@ -14,6 +13,7 @@ export default function Trips(props) {
               <th scope="col">Meeting Location</th>
               <th scope="col">Duration</th>
               <th scope="col">Packing List</th>
+              <th scope="col">Guide</th>
             </tr>
           </thead>
           <tbody>
@@ -25,6 +25,7 @@ export default function Trips(props) {
                 <td>{trip.location}</td>
                 <td>{trip.duration}</td>
                 <td>{trip.packingList}</td>
+                <td>{/*guide name*/}</td>
               </tr>
             ))}
           </tbody>

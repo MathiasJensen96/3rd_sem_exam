@@ -23,19 +23,21 @@ export default function BasicExample() {
     fetch(`https://jenseninc.dk/devops-starter/api/trip/all`)
       .then((res) => res.json())
       .then((data) => {
+        //console.log(data.all);
         data.all.forEach((element) => {
           const newTrip = {
+            id: element.id,
             name: element.name,
-            date: element.data,
+            date: element.date,
             time: element.time,
             location: element.location,
             duration: element.duration,
             packingList: element.packingList,
           };
-          console.log(newTrip);
+          //console.log(newTrip);
+          trips.push(newTrip);
         });
-        //console.log(data.all);
-        // setTrips(data.all[0]);
+        //console.log(trips);
       });
   }, []);
 

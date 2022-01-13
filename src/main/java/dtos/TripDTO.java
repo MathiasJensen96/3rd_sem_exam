@@ -11,6 +11,7 @@ public class TripDTO {
     private String location;
     private String duration;
     private String packingList;
+    private long guideID;
 
     public TripDTO() {
     }
@@ -23,15 +24,17 @@ public class TripDTO {
         this.location = t.getLocation();
         this.duration = t.getDuration();
         this.packingList = t.getPackingList();
+        this.guideID = t.getGuide().getId();
     }
 
-    public TripDTO(String name, String date, String time, String location, String duration, String packingList) {
+    public TripDTO(String name, String date, String time, String location, String duration, String packingList, long guideID) {
         this.name = name;
         this.date = date;
         this.time = time;
         this.location = location;
         this.duration = duration;
         this.packingList = packingList;
+        this.guideID = guideID;
     }
 
     public Long getId() {
@@ -88,5 +91,26 @@ public class TripDTO {
 
     public void setPackingList(String packingList) {
         this.packingList = packingList;
+    }
+
+    public long getGuideID() {
+        return guideID;
+    }
+
+    public void setGuideID(long guideID) {
+        this.guideID = guideID;
+    }
+
+    @Override
+    public String toString() {
+        return "TripDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", location='" + location + '\'' +
+                ", duration='" + duration + '\'' +
+                ", packingList='" + packingList + '\'' +
+                '}';
     }
 }
