@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GuideBio from "./components/GuideBio";
 import AdminPage from "./components/AdminPage";
+import { SERVER_URL } from "./constants.js";
 
 const initialGuideState = {
   name: null,
@@ -33,7 +34,7 @@ export default function BasicExample() {
   };
 
   useEffect(() => {
-    fetch(`https://jenseninc.dk/devops-starter/api/trip/all`)
+    fetch(SERVER_URL + `api/trip/all`)
       .then((res) => res.json())
       .then((data) => {
         //console.log(data.all);
@@ -56,7 +57,7 @@ export default function BasicExample() {
   }, []);
 
   useEffect(() => {
-    fetch(`https://jenseninc.dk/devops-starter/api/guide/all`)
+    fetch(SERVER_URL + `api/guide/all`)
       .then((res) => res.json())
       .then((data) => {
         //console.log(data.all);
@@ -109,9 +110,9 @@ export default function BasicExample() {
               />
             </Route>
             <Route path="/Trips">
-              {/* {facade.hasUserAccess("user", loggedIn) && ( */}
-              <Trips trips={trips} currentGuide={currentGuide} />
-              {/* )} */}
+              {facade.hasUserAccess("user", loggedIn) && (
+                <Trips trips={trips} currentGuide={currentGuide} />
+              )}
             </Route>
             <Route path="/Guides">
               <Guides guides={guides} />
