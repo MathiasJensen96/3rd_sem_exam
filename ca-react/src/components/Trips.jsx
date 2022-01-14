@@ -1,4 +1,6 @@
 export default function Trips(props) {
+  async function test() {}
+
   return (
     <div>
       <h1>Here you find a list of all our trips</h1>

@@ -2,6 +2,7 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,7 @@ public class Trip implements Serializable {
         this.location = location;
         this.duration = duration;
         this.packingList = packingList;
+        this.userList = new ArrayList<>();
     }
 
     public List<User> getUserList() {

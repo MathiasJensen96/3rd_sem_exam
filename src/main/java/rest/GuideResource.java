@@ -3,7 +3,6 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facades.GuideFacade;
-import facades.TripFacade;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;

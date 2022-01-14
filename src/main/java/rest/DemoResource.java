@@ -8,6 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import dtos.UserDTO;
+import dtos.UserRestDTO;
+import entities.Trip;
+import entities.User;
 import facades.UserFacade;
 import utils.EMF_Creator;
 

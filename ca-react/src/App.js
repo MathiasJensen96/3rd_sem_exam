@@ -7,6 +7,8 @@ import Guides from "./components/Guides";
 import facade from "./facade";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import GuideBio from "./components/GuideBio";
+import AdminPage from "./components/AdminPage";
 
 const initialGuideState = {
   name: null,
@@ -71,7 +73,7 @@ export default function BasicExample() {
       });
   }, []);
 
-  function currentGuide(guide) {
+  async function currentGuide(guide) {
     const newGuide = {
       name: guide.name,
       gender: guide.gender,
@@ -79,12 +81,13 @@ export default function BasicExample() {
       profile: guide.profile,
       imageURL: guide.imageURL,
     };
-    setTimeout(() => {
-      setOurGuide(newGuide);
-    }, 1000);
-    if (ourGuide !== null) {
-      console.log(ourGuide);
-    }
+    return newGuide;
+    // setTimeout(() => {
+    //   setOurGuide(newGuide);
+    // }, 1000);
+    // if (ourGuide !== null) {
+    //   console.log(ourGuide);
+    // }
   }
 
   return (
@@ -112,6 +115,12 @@ export default function BasicExample() {
             </Route>
             <Route path="/Guides">
               <Guides guides={guides} />
+            </Route>
+            <Route path="/GuideBio">
+              <GuideBio currentGuide={currentGuide} />
+            </Route>
+            <Route path="/AdminPage">
+              <AdminPage />
             </Route>
           </Switch>
         </div>

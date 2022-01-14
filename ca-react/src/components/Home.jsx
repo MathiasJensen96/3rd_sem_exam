@@ -20,23 +20,23 @@ export default function Home({
     });
   };
 
-  function addUser() {
-    const userObject = {
-      userName: login.username,
-      userPass: login.password,
-    };
-    console.log(userObject);
+  // function addUser() {
+  //   const userObject = {
+  //     userName: login.username,
+  //     userPass: login.password,
+  //   };
+  //   console.log(userObject);
 
-    const options = facade.makeOptions("POST", true, userObject);
+  //   const options = facade.makeOptions("POST", true, userObject);
 
-    fetch(`https://jenseninc.dk/Restaurant/api/info/newUser`, options)
-      .then(facade.handleHttpErrors)
-      .then((data) => {
-        setLogin(initialState);
-        alert("User has been created - Now you can login!");
-      })
-      .catch(facade.errorHandling);
-  }
+  //   fetch(`https://jenseninc.dk/Restaurant/api/info/newUser`, options)
+  //     .then(facade.handleHttpErrors)
+  //     .then((data) => {
+  //       setLogin(initialState);
+  //       alert("User has been created - Now you can login!");
+  //     })
+  //     .catch(facade.errorHandling);
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -51,15 +51,15 @@ export default function Home({
     setLogin(initialState);
   };
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  // const handleClick = (event) => {
+  //   event.preventDefault();
 
-    if (login.username !== "") {
-      addUser();
-    } else {
-      alert("You need to fill in a username..");
-    }
-  };
+  //   if (login.username !== "") {
+  //     addUser();
+  //   } else {
+  //     alert("You need to fill in a username..");
+  //   }
+  // };
 
   return (
     <div className="col-xs-1" align="center">
@@ -93,6 +93,9 @@ export default function Home({
       )}
       <p>Role: {facade.getUserRoles()}</p>
       <button onClick={logout}>Logout</button>
+      {/* <br />
+      <br />
+      <button>Add User</button> */}
     </div>
   );
 }

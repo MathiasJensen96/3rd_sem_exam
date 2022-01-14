@@ -41,7 +41,6 @@ public class UserFacade {
     }
 
     public String getAllUsers() {
-
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<User> query = em.createQuery("select u from User u", entities.User.class);

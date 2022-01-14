@@ -1,6 +1,5 @@
 package dtos;
 
-import entities.Guide;
 import entities.Trip;
 
 public class TripDTO {

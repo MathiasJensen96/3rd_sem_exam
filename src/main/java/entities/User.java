@@ -39,28 +39,6 @@ public class User implements Serializable {
     private int birthYear;
     private String gender;
 
-    public List<String> getRolesAsStrings() {
-        if (roleList.isEmpty()) {
-            return null;
-        }
-        List<String> rolesAsStrings = new ArrayList<>();
-        roleList.forEach((role) -> {
-            rolesAsStrings.add(role.getRoleName());
-        });
-        return rolesAsStrings;
-    }
-
-    public List<String> getTripsAsStrings() {
-        if (tripList.isEmpty()) {
-            return null;
-        }
-        List<String> tripsAsStrings = new ArrayList<>();
-        tripList.forEach((trip) -> {
-            tripsAsStrings.add(trip.getName());
-        });
-        return tripsAsStrings;
-    }
-
     public User() {
     }
 
@@ -77,6 +55,29 @@ public class User implements Serializable {
         this.email = email;
         this.birthYear = birthYear;
         this.gender = gender;
+        this.tripList = new ArrayList<>();
+    }
+
+    public List<String> getTripsAsStrings() {
+        if (tripList.isEmpty()) {
+            return null;
+        }
+        List<String> tripsAsStrings = new ArrayList<>();
+        tripList.forEach((trip) -> {
+            tripsAsStrings.add(trip.getName());
+        });
+        return tripsAsStrings;
+    }
+
+    public List<String> getRolesAsStrings() {
+        if (roleList.isEmpty()) {
+            return null;
+        }
+        List<String> rolesAsStrings = new ArrayList<>();
+        roleList.forEach((role) -> {
+            rolesAsStrings.add(role.getRoleName());
+        });
+        return rolesAsStrings;
     }
 
     public String getUserName() {
@@ -159,5 +160,18 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", userPass='" + userPass + '\'' +
+                ", roleList=" + roleList +
+                ", tripList=" + tripList +
+                ", address='" + address + '\'' +
+                ", phone=" + phone +
+                ", email='" + email + '\'' +
+                ", birthYear=" + birthYear +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
 }

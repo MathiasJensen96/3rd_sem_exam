@@ -2,9 +2,7 @@ package facades;
 
 import dtos.GuideDTO;
 import dtos.GuidesDTO;
-import dtos.TripsDTO;
 import entities.Guide;
-import entities.Trip;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
